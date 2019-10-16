@@ -2,19 +2,20 @@
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System.Web;
 
 namespace TwitterApiRequest
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-
-            string json = File.ReadAllText(@"C:\Users\lucas.klein\Desktop\1.json");
-
-            var result = JsonConvert.DeserializeObject<TwitterJson>(json);
-
-            Console.WriteLine(result);
+            var result = await TwitterRequest.GetTweets("GloboLixo", 100, null);
+            var lista = JsonConvert.DeserializeObject<TwitterJson>(result);
+            Console.ReadKey();
         }
     }
 }
