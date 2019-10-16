@@ -8,6 +8,6 @@ namespace JsonClass
     public class StatusEntities
     {
         [JsonProperty("hashtags")]
-        public string[] Hashtags { get; set; }
+        public List<Hashtag> Hashtags { get; set; }
     }
 }

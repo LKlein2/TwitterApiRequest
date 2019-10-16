@@ -8,6 +8,6 @@ namespace JsonClass
     public class TwitterJson
     {
         [JsonProperty("statuses")]
-        public Status[] Statuses { get; set; }
+        public List<Status> Statuses { get; set; }
     }
 }
