@@ -16,7 +16,7 @@ namespace TwitterApiRequest
             var httpClient = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Post, "https://api.twitter.com/oauth2/token ");
             var customerInfo = Convert.ToBase64String(new UTF8Encoding()
-                                      .GetBytes("VWZEj9DDSdwaXvGi543CXqpkh" + ":" + "yVOxY9wL3QEq00zJdPVlrKLUVc1RY7GMqTVpmfpmo9b9eA4gLN"));
+                                      .GetBytes("yeEjP9jfgQxFbdj82f130pdze" + ":" + "D6TAJSmye7vycfRFdnNny1mwYWaZQmlc4cfKD2wqlzBzXxqIqq"));
             request.Headers.Add("Authorization", "Basic " + customerInfo);
             request.Content = new StringContent("grant_type=client_credentials",
                                                     Encoding.UTF8, "application/x-www-form-urlencoded");
@@ -29,7 +29,7 @@ namespace TwitterApiRequest
             return item["access_token"];
         }
 
-        public static async Task<string> GetTweets(string search, int count, string accessToken = null, int maxId = 0)
+        public static async Task<string> GetTweets(string search, int count, string accessToken = null, long maxId = 0)
         {
             if (accessToken == null)
             {

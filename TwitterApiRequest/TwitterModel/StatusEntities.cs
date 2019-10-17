@@ -9,5 +9,8 @@ namespace JsonClass
     {
         [JsonProperty("hashtags")]
         public List<Hashtag> Hashtags { get; set; }
+
+        [JsonProperty("user_mentions")]
+        public List<UserMentions> UserMentions { get; set; }
     }
 }

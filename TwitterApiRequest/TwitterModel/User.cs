@@ -8,7 +8,7 @@ namespace JsonClass
     public partial class User
     {
         [JsonProperty("id")]
-        public double Id { get; set; }
+        public long Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

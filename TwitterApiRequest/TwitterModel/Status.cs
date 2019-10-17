@@ -11,7 +11,7 @@ namespace JsonClass
         public string CreatedAt { get; set; }
 
         [JsonProperty("id")]
-        public double? Id { get; set; }
+        public long Id { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -24,7 +24,8 @@ namespace JsonClass
 
         public override string ToString()
         {
-            return $"Created: {CreatedAt} with id: {Id} Text: {Text}";
+            //return $"Created: {CreatedAt} with id: {Id} Text: {Text}";
+            return $"id_user: {User.Id} name: {User.Name} screen_name: {User.ScreenName} fallowers_count: {User.FavouritesCount} friends_count: {User.FriendsCount} id_tweet: {Id} text: {Text}";
         }
     }
 }
