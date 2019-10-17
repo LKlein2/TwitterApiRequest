@@ -37,7 +37,7 @@ namespace TwitterApiRequest
             }
 
             var requestUserTimeline = new HttpRequestMessage(HttpMethod.Get,
-                string.Format(@"https://api.twitter.com/1.1/search/tweets.json?q={0}&result_type=recent&count={1}&trim_user=1&exclude_replies=1" + (maxId != 0 ? $"&max_id={maxId}" : ""), search, count));
+                string.Format(@"https://api.twitter.com/1.1/search/tweets.json?q={0}&result_type=recent&count={1}&exclude_replies=1" + (maxId != 0 ? $"&max_id={maxId}" : ""), search, count));
             requestUserTimeline.Headers.Add("Authorization", "Bearer " + accessToken);
             var httpClient = new HttpClient();
             HttpResponseMessage responseUserTimeLine = await httpClient.SendAsync(requestUserTimeline);
