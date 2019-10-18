@@ -19,16 +19,16 @@ namespace TwitterApiRequest
 
             while (true)
             {
-                var result = await TwitterRequest.GetTweets("CampeonatoDoBrasileiro", 100, null, id_max);
+                var result = await TwitterRequest.GetTweets("CampeonatoBrasileiro", 100, null, id_max);
                 var lista = JsonConvert.DeserializeObject<TwitterJson>(result);
 
                 foreach (var item in lista.Statuses)
                 {
                     FileWriter wf = new FileWriter();
                     wf.WriterOnFile(item.ToString());
-
                     Console.WriteLine(item.ToString() + "\n");
-                    id_max = (item.Id - 1);
+
+                    id_max = (item.Id);
                 }
 
                 Thread.Sleep(500);
