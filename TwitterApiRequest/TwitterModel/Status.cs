@@ -24,8 +24,17 @@ namespace JsonClass
 
         public override string ToString()
         {
+            var sb = new System.Text.StringBuilder();
+
+            sb.Append(String.Format("{0,20} {1,40} {2,10} {3,10} {4,20} {5,280}",User.Id, User.ScreenName, User.FavouritesCount, User.FriendsCount, Id, Text.Replace("\n"," ")));
+
+            return sb.ToString();
+
             //return $"Created: {CreatedAt} with id: {Id} Text: {Text}";
-            return $"id_user: {User.Id} name: {User.Name} screen_name: {User.ScreenName} fallowers_count: {User.FavouritesCount} friends_count: {User.FriendsCount} id_tweet: {Id} text: {Text}";
+            // return $"{User.Id} {User.Name} {User.ScreenName} {User.FavouritesCount} {User.FriendsCount} {Id} {Text}";
+
+
         }
+
     }
 }

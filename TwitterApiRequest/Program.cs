@@ -19,7 +19,7 @@ namespace TwitterApiRequest
 
             while (true)
             {
-                var result = await TwitterRequest.GetTweets("CampeonatoDoBrasileiro", 100, null, 1181561032415875077);
+                var result = await TwitterRequest.GetTweets("CampeonatoDoBrasileiro", 100, null, id_max);
                 var lista = JsonConvert.DeserializeObject<TwitterJson>(result);
 
                 foreach (var item in lista.Statuses)
@@ -27,7 +27,7 @@ namespace TwitterApiRequest
                     FileWriter wf = new FileWriter();
                     wf.WriterOnFile(item.ToString());
 
-                    //Console.WriteLine(item.ToString() + "\n");
+                    Console.WriteLine(item.ToString() + "\n");
                     id_max = (item.Id - 1);
                 }
 
