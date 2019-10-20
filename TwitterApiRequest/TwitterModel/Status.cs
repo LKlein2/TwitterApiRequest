@@ -25,15 +25,13 @@ namespace JsonClass
         public override string ToString()
         {
             var sb = new System.Text.StringBuilder();
-
-            sb.Append(String.Format("{0,20} {1,40} {2,10} {3,10} {4,20} {5,280}",User.Id, User.ScreenName, User.FavouritesCount, User.FriendsCount, Id, Text.Replace("\n"," ")));
-
+            //sb.Append(String.Format("{0,20} {1,40} {2,10} {3,10} {4,20} {5,280}",User.Id, User.ScreenName, User.FavouritesCount, User.FriendsCount, Id, Text.Replace("\n"," ")));
+            sb.Append(String.Format("{0,20} {1,8} {2,280} {3,280}", Id, FormatedDate(), Text.Replace("\n", ""), Entities.OneLineHashtag()));
             return sb.ToString();
-
-            //return $"Created: {CreatedAt} with id: {Id} Text: {Text}";
-            // return $"{User.Id} {User.Name} {User.ScreenName} {User.FavouritesCount} {User.FriendsCount} {Id} {Text}";
-
-
+        }
+        private string FormatedDate()
+        {
+            return DateTime.ParseExact(this.CreatedAt, "ddd MMM dd HH:mm:ss +ffff yyyy", new System.Globalization.CultureInfo("en-US")).ToString("yyyyMMdd");
         }
 
     }

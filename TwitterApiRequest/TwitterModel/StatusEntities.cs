@@ -12,5 +12,15 @@ namespace JsonClass
 
         [JsonProperty("user_mentions")]
         public List<UserMentions> UserMentions { get; set; }
+
+        public string OneLineHashtag()
+        {
+            string  hs = "";
+            foreach (Hashtag h in this.Hashtags)
+            {
+                hs = hs + "#" + h.Text;
+            }
+            return hs;
+        }
     }
 }

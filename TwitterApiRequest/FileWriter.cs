@@ -9,7 +9,7 @@ namespace TwitterApiRequest
     {
         public void WriterOnFile(string text)
         {
-            StreamWriter writer = new StreamWriter(@"D:\twitter2.txt", true);
+            StreamWriter writer = new StreamWriter(@"C:\Temp\twitter2.txt", true);
             using (writer)
             {
                 // Escreve uma nova linha no final do arquivo
