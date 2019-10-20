@@ -26,7 +26,7 @@ namespace JsonClass
         {
             var sb = new System.Text.StringBuilder();
             //sb.Append(String.Format("{0,20} {1,40} {2,10} {3,10} {4,20} {5,280}",User.Id, User.ScreenName, User.FavouritesCount, User.FriendsCount, Id, Text.Replace("\n"," ")));
-            sb.Append(String.Format("{0,20} {1,8} {2,280} {3,280}", Id, FormatedDate(), Text.Replace("\n", ""), Entities.OneLineHashtag()));
+            sb.Append(String.Format("{0,20}{1,8}{2,280}{3,280}", Id, FormatedDate(), Text.Replace("\n", ""), Entities.OneLineHashtag()));
             return sb.ToString();
         }
         private string FormatedDate()

@@ -7,6 +7,6 @@ namespace TwitterApiRequest.Indexes
     public interface IIndexable
     {
         string GetKey();
-        int GetPos();
+        long GetPos();
     }
 }
