@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using TwitterApiRequest.Indexes;
 
 namespace TwitterApiRequest
 {
@@ -15,7 +16,22 @@ namespace TwitterApiRequest
     {
         static async Task Main(string[] args)
         {
-            await RequestsAndWriting.DoItAll();
+            #region Request e Write
+
+            //await RequestsAndWriting.DoItAll();
+
+            #endregion
+
+            #region Search Twitter ID
+
+            string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            string file = @"twitter2.txt";
+            string indexFile = @"indice.txt";
+
+            SearchIndex si = new SearchIndex(folderpath, file, indexFile);
+            si.ReadAndSearch("01185927377324515329");
+
+            #endregion
 
         }
     }

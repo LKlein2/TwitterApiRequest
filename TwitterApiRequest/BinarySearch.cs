@@ -8,7 +8,7 @@ namespace TwitterApiRequest
 {
     public class BinarySearch
     {
-        public IIndexable Search(List<IIndexable> indexes, string target)
+        public static IIndexable Search(List<IIndexable> indexes, string target)
         {
             int mid, first = 0, last = indexes.Count();
 
@@ -20,8 +20,7 @@ namespace TwitterApiRequest
                 {
                     first = mid + 1;
                 }
-
-                if (compare > 0)
+                else if (compare > 0)
                 {
                     last = mid - 1;
                 }
