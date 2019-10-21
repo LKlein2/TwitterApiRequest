@@ -7,53 +7,39 @@ namespace TwitterApiRequest.Indexes
 {
     public class SearchIndex
     {
-        public string FolderPath { get; set; }
-        public string FileName { get; set; }
-        public string IndexFileName { get; set; }
-        public int LineLength { get; set; }
+        public static string FolderPath { get; set; }
+        public static string FileName { get; set; }
+        public static string IndexFileName { get; set; }
+        public static int LineLength { get; set; }
         public List<IIndexable> Indexes { get => indexes; set => indexes = value; }
         private List<IIndexable> indexes = new List<IIndexable>();
 
         public SearchIndex(string folderPath, string fileName, string indexFileName)
         {
-            this.FolderPath = folderPath;
-            this.FileName = fileName;
-            this.IndexFileName = indexFileName;
+            FolderPath = folderPath;
+            FileName = fileName;
+            IndexFileName = indexFileName;
         }
 
         public void ReadAndSearch(string id)
         {
-            ReadIndexFile();
             SearchWithIndex(id);
-        }
-
-        public void ReadIndexFile()
-        {
-            string path = FolderPath + @"\" + IndexFileName;
-
-            using (StreamReader reader = File.OpenText(path))
-            {
-                string[] cab = reader.ReadLine().Split(';');
-                int KeySize = Convert.ToInt32(cab[0]);
-                int PosSize = Convert.ToInt32(cab[1]);
-
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine();
-                    Indexes.Add(new IndexTweetid { Key = line.Substring(0, KeySize), Pos = Convert.ToInt64(line.Substring(KeySize))});
-                }
-            }
         }
 
         public void SearchWithIndex(string id)
         {
             string path = FolderPath + @"\" + FileName;
+            List<IIndexable> index = BinarySearch.Search(Indexes, id);
+
+
             GetLineLength(path);
-            IIndexable index = BinarySearch.Search(Indexes, id);
             if (index != null)
             {
-                string line = GetData(path, index.GetPos());
-                
+                foreach (var item in index)
+                {
+                    var rm = new RecordModel(GetData(path, item.GetPos()));
+                    Console.WriteLine(rm.ToString() + "\n\n");
+                }                
             } 
             else
             {
