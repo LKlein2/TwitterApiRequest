@@ -1,34 +1,28 @@
-import operator
 f = open("twitter2.txt", 'r',encoding="utf8")
-w = open("indice_hashtag.txt", 'w' )
-
+w = open("indice_id_tweet.txt", 'w' )
 
 class indiceOff:
 	def __init__(self, index, offset):
 		self.index = index
 		self.offset = offset
 
-
 def pLe():
 	pos = f.tell()
 	linha = f.readline()
 	if linha == '': return
-	hashtags = linha[309:589]
-	hashtags = hashtags.strip()
-	if '#' in hashtags:
-		hashtags = hashtags.split('#')
-		for x in range(len(hashtags)):
-			if(x != 0):
-				p = indiceOff(hashtags[x], pos)
-				lista.append(p)
-			
+	linha = linha[609:649]
+	linha = linha.strip()
+	p = indiceOff(linha, pos)
+	lista.append(p)
 	return linha
 
 lista = []
-ordendado = []
 while pLe():
-	pass
-w.write("280;10\n")
-lista.sort(key = lambda mbr: operator.attrgetter('index')(mbr).lower())
-for x in range (len(lista)):
-	w.write((lista[x].index).ljust(278) + str('%010d' % lista[x].offset) + "\n")
+	pass	
+
+w.write("40;10\n")
+lista.sort(key = lambda mbr: operator.attrgetter('index')(mbr).lower(),  reverse = True)
+w.write(linha.ljust(40) + str('%010d' % pos) + "\n")
+
+f.close
+w.close

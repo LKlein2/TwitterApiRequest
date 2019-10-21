@@ -15,7 +15,7 @@ namespace TwitterApiRequest
             while (first <= last)
             {
                 mid = (first + last) / 2;
-                int compare = String.Compare(target, indexes[mid].GetKey(), StringComparison.Ordinal);
+                int compare = String.Compare(target.ToUpper().Trim(), indexes[mid].GetKey().ToUpper().Trim(), StringComparison.Ordinal);
                 if (compare < 0)
                 {
                     first = mid + 1;

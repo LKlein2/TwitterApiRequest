@@ -24,12 +24,23 @@ namespace TwitterApiRequest
 
             #region Search Twitter ID
 
-            string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            //string folderpath = @"C:\Users\lucas.klein\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            //string file = @"twitter2.txt";
+            //string indexFile = @"indice_id_tweet.txt";
+
+            //SearchIndex si = new SearchIndex(folderpath, file, indexFile);
+            //si.ReadAndSearch("01185927377324515329");
+
+            #endregion
+
+            #region Search Hashtag
+
+            string folderpath = @"C:\Users\lucas.klein\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
             string file = @"twitter2.txt";
-            string indexFile = @"indice.txt";
+            string indexFile = @"indice_screen_name.txt";
 
             SearchIndex si = new SearchIndex(folderpath, file, indexFile);
-            si.ReadAndSearch("01185927377324515329");
+            si.ReadAndSearch("vieira_altair");
 
             #endregion
 
