@@ -1,4 +1,5 @@
 import operator
+lista = []
 
 f = open("twitter2.txt", 'r',encoding="utf8")
 w = open("indice_screen_name.txt", 'w' )
@@ -18,13 +19,12 @@ def pLe():
 	lista.append(p)
 	return linha
 
-lista = []
+
 while pLe():
 	pass	
-
 w.write("40;10\n")
 lista.sort(key = lambda mbr: operator.attrgetter('index')(mbr).lower(),  reverse = True)
-for x in range (len(lista)):
+for x in range (len(lista) - 1):
 	w.write((lista[x].index).ljust(40) + str('%010d' % lista[x].offset) + "\n")
 
 f.close
