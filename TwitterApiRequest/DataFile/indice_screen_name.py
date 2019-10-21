@@ -21,8 +21,9 @@ def pLe():
 
 
 while pLe():
-	pass	
-w.write("40;10\n")
+	pass
+var = "40;10"
+w.write(var.ljust(45) +"\n")
 lista.sort(key = lambda mbr: operator.attrgetter('index')(mbr).lower(),  reverse = True)
 for x in range (len(lista) - 1):
 	w.write((lista[x].index).ljust(40) + str('%010d' % lista[x].offset) + "\n")
