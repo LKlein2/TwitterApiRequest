@@ -11,8 +11,6 @@ namespace TwitterApiRequest.Indexes
         public static string FileName { get; set; }
         public static string IndexFileName { get; set; }
         public static int LineLength { get; set; }
-        public List<IIndexable> Indexes { get => indexes; set => indexes = value; }
-        private List<IIndexable> indexes = new List<IIndexable>();
 
         public SearchIndex(string folderPath, string fileName, string indexFileName)
         {
@@ -29,7 +27,7 @@ namespace TwitterApiRequest.Indexes
         public void SearchWithIndex(string id)
         {
             string path = FolderPath + @"\" + FileName;
-            List<IIndexable> index = BinarySearch.Search(Indexes, id);
+            List<IIndexable> index = BinarySearch.Search(id);
 
 
             GetLineLength(path);
@@ -47,11 +45,12 @@ namespace TwitterApiRequest.Indexes
             }
         }
 
-        public void GetLineLength(string path)
+        public static void GetLineLength(string path)
         {
             string line;
             using (StreamReader reader = new StreamReader(path))
             {
+                line = reader.ReadLine();
                 line = reader.ReadLine();
                 if (line != null)
                 {
@@ -77,7 +76,7 @@ namespace TwitterApiRequest.Indexes
             return text;
         }
 
-        private static string DecodeData(byte[] data)
+        public static string DecodeData(byte[] data)
         {
             var encoding = new UTF8Encoding();
             return encoding.GetString(data);
