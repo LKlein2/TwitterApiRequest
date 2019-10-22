@@ -7,10 +7,7 @@ namespace TwitterApiRequest.Tree
     class Tree
     {
         private Node root { get; set; }
-        private int cont { get; set; }
-
-        private IComparer<int> _comparer = Comparer<int>.Default;
-
+        private int cont;
 
         public bool Add(int Value)
         {
@@ -46,12 +43,12 @@ namespace TwitterApiRequest.Tree
                 if (Node.Left == null)
                 {
                     Node.Left = new Node(Value);
-                    count++;
+                    cont++;
                     return true;
                 }
                 else
                 {
-                    return Add_Sub(Node.left, Value);
+                    return Add_Sub(Node.Left, Value);
                 }
             }
             else
@@ -69,24 +66,24 @@ namespace TwitterApiRequest.Tree
         {
             if (p != null)
             {
-                if (p.right != null)
+                if (p.Right != null)
                 {
-                    Print(p.right, padding + 4);
+                    Print(p.Right, padding + 4);
                 }
                 if (padding > 0)
                 {
                     Console.Write(" ".PadLeft(padding));
                 }
-                if (p.right != null)
+                if (p.Right != null)
                 {
                     Console.Write("/\n");
                     Console.Write(" ".PadLeft(padding));
                 }
                 Console.Write(p.Value.ToString() + "\n ");
-                if (p.left != null)
+                if (p.Left != null)
                 {
                     Console.Write(" ".PadLeft(padding) + "\\\n");
-                    Print(p.left, padding + 4);
+                    Print(p.Left, padding + 4);
                 }
             }
         }
