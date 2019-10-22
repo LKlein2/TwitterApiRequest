@@ -42,12 +42,11 @@ namespace TwitterApiRequest
             #endregion
 
             #region Search HashTag
+            //string file = @"twitter2.txt";
+            //string indexFile = @"indice2_hashtag_ordenado.txt";
 
-            string file = @"twitter2.txt";
-            string indexFile = @"indice2_hashtag_ordenado.txt";
-
-            SearchIndex si = new SearchIndex(folderpath, file, indexFile);
-            si.ReadAndSearch("B17");
+            //SearchIndex si = new SearchIndex(folderpath, file, indexFile);
+            //si.ReadAndSearch("B17");
             #endregion
 
             Console.ReadKey();
