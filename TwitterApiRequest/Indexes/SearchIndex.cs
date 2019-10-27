@@ -13,6 +13,8 @@ namespace TwitterApiRequest.Indexes
         public static int LineLength { get; set; }
 
         public List<RecordModel>[] TheArray;
+        public Tree.Tree Tree;
+
 
         public SearchIndex(string folderPath, string fileName)
         {
@@ -47,6 +49,35 @@ namespace TwitterApiRequest.Indexes
                     date = line.Substring(20, 8);
                     index = HashFunction(Convert.ToInt32(date));
                     TheArray[index].Add(new RecordModel(line));
+                }
+            }
+        }
+
+        public void ReadAndStoreTree()
+        {
+            string path = FolderPath + @"\" + FileName;
+            string line, hashatag;
+            int index;
+            Tree = new Tree();
+
+            TheArray = new List<RecordModel>[15];
+            for (int i = 0; i < TheArray.Length; i++)
+            {
+                TheArray[i] = new List<RecordModel>();
+            }
+
+            using (StreamReader reader = new StreamReader(path))
+            {
+                while (!reader.EndOfStream)
+                {
+                    line = reader.ReadLine();
+                    hashatag = line.Substring(308, 280);
+                    string[] lines = line.Split('#');
+                    for (int i =0; i < lines.Length; i++)
+                    {
+                        Tree.Add(new IndexTweetid(lines[i]));
+          
+                    }
                 }
             }
         }

@@ -38,6 +38,7 @@ namespace TwitterApiRequest
                 Console.WriteLine("2 - Busca sequencial indexada por Screen name!");
                 Console.WriteLine("3 - Busca sequencial indexada por Hashtag!");
                 Console.WriteLine("4 - Busca hash por data!");
+                Console.WriteLine("5 - Busca Index Árvore!");
                 var x = Console.ReadLine();
                 Console.Clear();
 
@@ -74,7 +75,14 @@ namespace TwitterApiRequest
                         si.SearchHash(20191013);
                         break;
                     #endregion
-                    default:
+                    case "5":
+                        #region HashTag Tree
+                        si = new SearchIndex(folderpath, file);
+                        si.ReadAndStoreTree();
+                        si.SearchTree(20191013);
+                        break;
+                        #endregion
+                default:
                         isTrue = false;
                         break;
 	            }

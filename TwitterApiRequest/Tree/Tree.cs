@@ -5,7 +5,7 @@ using TwitterApiRequest.Indexes;
 
 namespace TwitterApiRequest.Tree
 {
-    class Tree
+    public class Tree
     {
         private Node root { get; set; }
         private int cont;
