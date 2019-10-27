@@ -45,7 +45,7 @@ namespace TwitterApiRequest.Tree
                     return Add_Sub(Node.Right, Value);
                 }
             }
-            else if (_comparer(Node.Value[0], Value) < 0)
+            else if (_comparer(Node.Value[0], Value) > 0)
             {
                 if (Node.Left == null)
                 {

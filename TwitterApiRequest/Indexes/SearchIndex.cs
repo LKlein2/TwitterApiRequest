@@ -72,7 +72,6 @@ namespace TwitterApiRequest.Indexes
                     for (int i = 1; i < lines.Length; i++)
                     {
                         Tree.Add(new IndexTweetid { Key = lines[i], Pos = pos });
-          
                     }
                     index++;
                 }
