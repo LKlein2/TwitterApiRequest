@@ -21,6 +21,7 @@ namespace TwitterApiRequest.Tree
             else if (_comparer(root.Value[0],Value) == 0)
             {
                 root.Value.Add(Value);
+                cont++;
                 return true;
             }
             else
@@ -60,6 +61,7 @@ namespace TwitterApiRequest.Tree
             else
             {
                 Node.Value.Add(Value);
+                cont++;
                 return true;
             }
         }
