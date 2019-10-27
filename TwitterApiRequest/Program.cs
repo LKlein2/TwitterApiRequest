@@ -48,7 +48,7 @@ namespace TwitterApiRequest
                         indexFile = @"indice_id_tweet.txt";
 
                         si = new SearchIndex(folderpath, file, indexFile);
-                        si.ReadAndSearch("01186284419922976769");
+                        si.SearchWithIndex("01186284419922976769");
                         break;
                         #endregion
                     case "2":
@@ -56,23 +56,22 @@ namespace TwitterApiRequest
                         indexFile = @"indice_screen_name.txt";
 
                         si = new SearchIndex(folderpath, file, indexFile);
-                        si.ReadAndSearch("ZettyCEC");
+                        si.SearchWithIndex("ZettyCEC");
                         break;
                         #endregion
                     case "3":
                         #region Search HashTag
                         indexFile = @"indice2_hashtag_ordenado.txt";
-
                         si = new SearchIndex(folderpath, file, indexFile);
-                        si.ReadAndSearch("B17");
+
+                        si.SearchWithIndex("B17");
                         break;
                     #endregion
                     case "4":
                         #region Search dataHash
-                        indexFile = @"indice2_hashtag_ordenado.txt";
-
-                        si = new SearchIndex(folderpath, file, indexFile);
-                        si.ReadAndSearch("B17");
+                        si = new SearchIndex(folderpath, file);
+                        si.ReadAndStore();
+                        si.SearchHash(20191013);
                         break;
                     #endregion
                     default:

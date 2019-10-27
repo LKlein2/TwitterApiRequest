@@ -12,6 +12,14 @@ namespace TwitterApiRequest.Indexes
         public static string IndexFileName { get; set; }
         public static int LineLength { get; set; }
 
+        public List<RecordModel>[] TheArray;
+
+        public SearchIndex(string folderPath, string fileName)
+        {
+            FolderPath = folderPath;
+            FileName = fileName;
+        }
+
         public SearchIndex(string folderPath, string fileName, string indexFileName)
         {
             FolderPath = folderPath;
@@ -19,9 +27,54 @@ namespace TwitterApiRequest.Indexes
             IndexFileName = indexFileName;
         }
 
-        public void ReadAndSearch(string id)
+        public void ReadAndStore()
         {
-            SearchWithIndex(id);
+            string path = FolderPath + @"\" + FileName;
+            string line, date;
+            int index;
+
+            TheArray = new List<RecordModel>[15];
+            for (int i = 0; i < TheArray.Length; i++)
+            {
+                TheArray[i] = new List<RecordModel>();
+            }
+
+            using (StreamReader reader = new StreamReader(path))
+            {
+                while (!reader.EndOfStream)
+                {
+                    line = reader.ReadLine();
+                    date = line.Substring(20, 8);
+                    index = HashFunction(Convert.ToInt32(date));
+                    TheArray[index].Add(new RecordModel(line));
+                }
+            }
+        }
+
+        public void SearchHash(int index)
+        {
+            index = HashFunction(index);
+            try
+            {
+                if (TheArray[index].Count <= 0)
+                {
+                    Console.WriteLine("Não foi possível encontrar!");
+                    return;
+                }
+                foreach (var item in TheArray[index])
+                {
+                    Console.WriteLine(item.ToString() + "\n\n");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Não foi possível encontrar!");
+            }
+        }
+
+        public int HashFunction(int date)
+        {
+            return date - 20191012;
         }
 
         public void SearchWithIndex(string id)
@@ -59,7 +112,7 @@ namespace TwitterApiRequest.Indexes
             }
         }
 
-        public string GetData(string path, long offset)
+        public static string GetData(string path, long offset)
         {
             FileInfo file = new FileInfo(path);
             string text;
