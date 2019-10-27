@@ -78,8 +78,6 @@ namespace TwitterApiRequest.Indexes
             }
         }
 
-
-
         public void SearchHash(int index)
         {
             index = HashFunction(index);

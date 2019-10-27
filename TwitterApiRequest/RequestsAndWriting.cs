@@ -26,11 +26,11 @@ namespace TwitterApiRequest
                 }
                 foreach (var item in lista.Statuses)
                 {
-                    if (!item.Text.Substring(0,2).Equals("RT"))
-                    {
+                    //if (!item.Text.Substring(0,2).Equals("RT"))
+                    //{
                         FileWriter wf = new FileWriter();
                         wf.WriterOnFile(item.ToString());
-                    }
+                    //}
 
                     id_max = (item.Id - 1);
                 }

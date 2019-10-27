@@ -14,18 +14,18 @@ namespace TwitterApiRequest
 {
     public class Program
     {
-        //static async Task Main(string[] args)
-        static void Main(string[] args)
+        static async Task Main(string[] args)
+        //static void Main(string[] args)
         {
             #region Request e Write
 
-            //await RequestsAndWriting.DoItAll();
-            //return 0;
+            await RequestsAndWriting.DoItAll();
+            Console.ReadKey();
 
             #endregion
 
-            //string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
-            string folderpath = @"C:\Users\Eduardo\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            //string folderpath = @"C:\Users\Eduardo\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
             string file = @"twitter2.txt";
             string indexFile;
             SearchIndex si;
@@ -48,7 +48,6 @@ namespace TwitterApiRequest
                     case "1":
                         #region Search Twitter ID
                         indexFile = @"indice_id_tweet.txt";
-
                         si = new SearchIndex(folderpath, file, indexFile);
                         si.SearchWithIndex("01186284419922976769");
                         break;
@@ -56,7 +55,6 @@ namespace TwitterApiRequest
                     case "2":
                         #region Search Screen Name
                         indexFile = @"indice_screen_name.txt";
-
                         si = new SearchIndex(folderpath, file, indexFile);
                         si.SearchWithIndex("ZettyCEC");
                         break;
@@ -65,7 +63,6 @@ namespace TwitterApiRequest
                         #region Search HashTag
                         indexFile = @"indice2_hashtag_ordenado.txt";
                         si = new SearchIndex(folderpath, file, indexFile);
-
                         si.SearchWithIndex("B17");
                         break;
                     #endregion
@@ -80,7 +77,7 @@ namespace TwitterApiRequest
                         #region HashTag Tree
                         si = new SearchIndex(folderpath, file);
                         si.ReadAndStoreTree();
-                        si.SearchTree("B17");
+                        si.SearchTree("STFVergonhaNacional");
                         break;
                         #endregion
                 default:

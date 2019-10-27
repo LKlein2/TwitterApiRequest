@@ -62,22 +62,30 @@ namespace TwitterApiRequest.Tree
 
         public void SearchTree(Node Node, String value)
         {
+            string path = SearchIndex.FolderPath + @"/" + SearchIndex.FileName;
             if(Node != null)
             {
-                this.SearchTree(Node.Left, value);
-                if (Node.Value[0].GetKey().ToUpper().Trim().Equals(value.ToUpper().Trim()))
+                int comp = String.Compare(Node.Value[0].GetKey().ToUpper().Trim(), value.ToUpper().Trim(), StringComparison.Ordinal);
+                if (comp == 0)
                 {
                     foreach (var item in Node.Value)
                     {
-                        Console.WriteLine(item.GetKey());
+                        RecordModel rm = new RecordModel(SearchIndex.GetData(path, item.GetPos()));
+                        Console.WriteLine(rm.ToString() + "\n\n");
+                        //Console.WriteLine(item.GetKey());
                     }
                     return;
                 }
-                this.SearchTree(Node.Right, value);
+                else if (comp > 0)
+                {
+                    this.SearchTree(Node.Left, value);
+                }
+                else if (comp < 0)
+                {
+                    this.SearchTree(Node.Right, value);
+                }
             }
         }
-
-
 
         public static int _comparer(IndexTweetid id1, IndexTweetid id2)
         {
