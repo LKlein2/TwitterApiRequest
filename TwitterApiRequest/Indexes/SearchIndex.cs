@@ -56,9 +56,10 @@ namespace TwitterApiRequest.Indexes
         public void ReadAndStoreTree()
         {
             string path = FolderPath + @"\" + FileName;
+            SearchIndex.GetLineLength(path);
             string line, hashatag;
-            int index;
-            Tree = new Tree();
+            int index = 0, pos;
+            Tree = new Tree.Tree();
 
             TheArray = new List<RecordModel>[15];
             for (int i = 0; i < TheArray.Length; i++)
@@ -70,14 +71,16 @@ namespace TwitterApiRequest.Indexes
             {
                 while (!reader.EndOfStream)
                 {
+                    pos = LineLength * index;
                     line = reader.ReadLine();
                     hashatag = line.Substring(308, 280);
                     string[] lines = line.Split('#');
                     for (int i =0; i < lines.Length; i++)
                     {
-                        Tree.Add(new IndexTweetid(lines[i]));
+                        Tree.Add(new IndexTweetid { Key = lines[i], Pos = pos });
           
                     }
+                    index++;
                 }
             }
         }
