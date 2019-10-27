@@ -61,12 +61,6 @@ namespace TwitterApiRequest.Indexes
             int index = 0, pos;
             Tree = new Tree.Tree();
 
-            TheArray = new List<RecordModel>[15];
-            for (int i = 0; i < TheArray.Length; i++)
-            {
-                TheArray[i] = new List<RecordModel>();
-            }
-
             using (StreamReader reader = new StreamReader(path))
             {
                 while (!reader.EndOfStream)
@@ -74,8 +68,8 @@ namespace TwitterApiRequest.Indexes
                     pos = LineLength * index;
                     line = reader.ReadLine();
                     hashatag = line.Substring(308, 280);
-                    string[] lines = line.Split('#');
-                    for (int i =0; i < lines.Length; i++)
+                    string[] lines = hashatag.Split('#');
+                    for (int i = 1; i < lines.Length; i++)
                     {
                         Tree.Add(new IndexTweetid { Key = lines[i], Pos = pos });
           
@@ -83,6 +77,12 @@ namespace TwitterApiRequest.Indexes
                     index++;
                 }
             }
+            Tree.Print();
+        }
+
+        public void SearchTree()
+        {
+        
         }
 
         public void SearchHash(int index)
