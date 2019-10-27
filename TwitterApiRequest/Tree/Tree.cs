@@ -7,21 +7,18 @@ namespace TwitterApiRequest.Tree
 {
     public class Tree
     {
-        private Node root { get; set; }
-        private int cont;
+        public Node root { get; set; }
 
         public bool Add(IndexTweetid Value)
         {
             if (root == null)
             {
                 root = new Node(Value);
-                cont++;
                 return true;
             }
             else if (_comparer(root.Value[0],Value) == 0)
             {
                 root.Value.Add(Value);
-                cont++;
                 return true;
             }
             else
@@ -37,7 +34,6 @@ namespace TwitterApiRequest.Tree
                 if (Node.Right == null)
                 {
                     Node.Right = new Node(Value);
-                    cont++;
                     return true;
                 }
                 else
@@ -50,7 +46,6 @@ namespace TwitterApiRequest.Tree
                 if (Node.Left == null)
                 {
                     Node.Left = new Node(Value);
-                    cont++;
                     return true;
                 }
                 else
@@ -61,41 +56,28 @@ namespace TwitterApiRequest.Tree
             else
             {
                 Node.Value.Add(Value);
-                cont++;
                 return true;
             }
         }
 
-        public void Print()
+        public void SearchTree(Node Node, String value)
         {
-            Print(root, 4);
-        }
-
-        public void Print(Node p, int padding)
-        {
-            if (p != null)
+            if(Node != null)
             {
-                if (p.Right != null)
+                this.SearchTree(Node.Left, value);
+                if (Node.Value[0].GetKey().ToUpper().Trim().Equals(value.ToUpper().Trim()))
                 {
-                    Print(p.Right, padding + 4);
+                    foreach (var item in Node.Value)
+                    {
+                        Console.WriteLine(item.GetKey());
+                    }
+                    return;
                 }
-                if (padding > 0)
-                {
-                    Console.Write(" ".PadLeft(padding));
-                }
-                if (p.Right != null)
-                {
-                    Console.Write("/\n");
-                    Console.Write(" ".PadLeft(padding));
-                }
-                Console.Write(p.Value.ToString() + "\n ");
-                if (p.Left != null)
-                {
-                    Console.Write(" ".PadLeft(padding) + "\\\n");
-                    Print(p.Left, padding + 4);
-                }
+                this.SearchTree(Node.Right, value);
             }
         }
+
+
 
         public static int _comparer(IndexTweetid id1, IndexTweetid id2)
         {

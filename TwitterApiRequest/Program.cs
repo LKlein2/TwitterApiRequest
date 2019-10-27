@@ -24,8 +24,8 @@ namespace TwitterApiRequest
 
             #endregion
 
-            string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
-            //string folderpath = @"C:\Users\Eduardo\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            //string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            string folderpath = @"C:\Users\Eduardo\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
             string file = @"twitter2.txt";
             string indexFile;
             SearchIndex si;
@@ -80,7 +80,7 @@ namespace TwitterApiRequest
                         #region HashTag Tree
                         si = new SearchIndex(folderpath, file);
                         si.ReadAndStoreTree();
-                        //si.SearchTree(20191013);
+                        si.SearchTree("B17");
                         break;
                         #endregion
                 default:

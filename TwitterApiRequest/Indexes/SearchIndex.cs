@@ -76,13 +76,9 @@ namespace TwitterApiRequest.Indexes
                     index++;
                 }
             }
-            Tree.Print();
         }
 
-        public void SearchTree()
-        {
-        
-        }
+
 
         public void SearchHash(int index)
         {
@@ -161,6 +157,12 @@ namespace TwitterApiRequest.Indexes
             }
             return text;
         }
+
+        public void SearchTree(String value)
+        {
+            Tree.SearchTree(Tree.root, value);
+        }
+
 
         public static string DecodeData(byte[] data)
         {
