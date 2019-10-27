@@ -15,7 +15,5 @@ namespace TwitterApiRequest.Tree
         {
             this.Value = value;
         }
-
-
     }
 }
