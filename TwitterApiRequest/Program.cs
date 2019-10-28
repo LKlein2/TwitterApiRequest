@@ -19,13 +19,13 @@ namespace TwitterApiRequest
         {
             #region Request e Write
 
-            await RequestsAndWriting.DoItAll();
-            Console.ReadKey();
+            //await RequestsAndWriting.DoItAll();
+            //Console.ReadKey();
 
             #endregion
 
-            string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
-            //string folderpath = @"C:\Users\Eduardo\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            //string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            string folderpath = @"C:\Users\Eduardo\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
             string file = @"twitter2.txt";
             string indexFile;
             SearchIndex si;
@@ -50,7 +50,7 @@ namespace TwitterApiRequest
                         indexFile = @"indice_id_tweet.txt";
                         si = new SearchIndex(folderpath, file, indexFile);
                         Console.WriteLine("Digite um indice: \n");
-                        var texto = Console.ReadLine()
+                        var texto = Console.ReadLine();
                         si.SearchWithIndex(texto);
                         break;
                         #endregion
@@ -78,7 +78,7 @@ namespace TwitterApiRequest
                         si.ReadAndStore();
                         Console.WriteLine("Digite uma data: \n");
                         texto = Console.ReadLine();
-                        si.SearchHash(texto);
+                        si.SearchHash(Convert.ToInt32(texto));
                         break;
                     #endregion
                     case "5":
