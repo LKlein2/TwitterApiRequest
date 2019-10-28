@@ -1,8 +1,8 @@
 import operator
 lista = []
 
-f = open("twitter2.txt", 'r',encoding="utf8")
-w = open("indice_screen_name.txt", 'w' )
+f = open("twitter2.txt", 'r')
+w = open("indice_screen_name.txt", 'w')
 
 class indiceOff:
 	def __init__(self, index, offset):

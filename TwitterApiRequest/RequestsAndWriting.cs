@@ -17,7 +17,7 @@ namespace TwitterApiRequest
 
             while (true)
             {
-                var result = await TwitterRequest.GetTweets("GloboLixo", 100, null, id_max);
+                var result = await TwitterRequest.GetTweets("Worlds2019", 100, null, id_max);
                 var lista = JsonConvert.DeserializeObject<TwitterJson>(result);
                 if (lista.Statuses.Count == 0)
                 {

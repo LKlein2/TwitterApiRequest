@@ -1,5 +1,5 @@
 import operator
-f = open("twitter2.txt", 'r',encoding="utf8")
+f = open("twitter2.txt", 'r')
 w = open("indice2_hashtag_ordenado.txt", 'w' )
 
 

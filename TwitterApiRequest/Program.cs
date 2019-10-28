@@ -49,35 +49,45 @@ namespace TwitterApiRequest
                         #region Search Twitter ID
                         indexFile = @"indice_id_tweet.txt";
                         si = new SearchIndex(folderpath, file, indexFile);
-                        si.SearchWithIndex("01186284419922976769");
+                        Console.WriteLine("Digite um indice: \n");
+                        var texto = Console.ReadLine()
+                        si.SearchWithIndex(texto);
                         break;
                         #endregion
                     case "2":
                         #region Search Screen Name
                         indexFile = @"indice_screen_name.txt";
                         si = new SearchIndex(folderpath, file, indexFile);
-                        si.SearchWithIndex("ZettyCEC");
+                        Console.WriteLine("Digite um nome: \n");
+                        texto = Console.ReadLine();
+                        si.SearchWithIndex(texto);
                         break;
                         #endregion
                     case "3":
                         #region Search HashTag
                         indexFile = @"indice2_hashtag_ordenado.txt";
                         si = new SearchIndex(folderpath, file, indexFile);
-                        si.SearchWithIndex("B17");
+                        Console.WriteLine("Digite uma hashtag: \n");
+                        texto = Console.ReadLine();
+                        si.SearchWithIndex(texto);
                         break;
                     #endregion
                     case "4":
                         #region Search dataHash
                         si = new SearchIndex(folderpath, file);
                         si.ReadAndStore();
-                        si.SearchHash(20191013);
+                        Console.WriteLine("Digite uma data: \n");
+                        texto = Console.ReadLine();
+                        si.SearchHash(texto);
                         break;
                     #endregion
                     case "5":
                         #region HashTag Tree
                         si = new SearchIndex(folderpath, file);
                         si.ReadAndStoreTree();
-                        si.SearchTree("STFVergonhaNacional");
+                        Console.WriteLine("Digite uma hashtag: \n");
+                        texto = Console.ReadLine();
+                        si.SearchTree(texto);
                         break;
                         #endregion
                 default:

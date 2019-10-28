@@ -1,4 +1,4 @@
-f = open("twitter2.txt", 'r',encoding="utf8")
+f = open("twitter2.txt", 'r')
 w = open("indice_id_tweet.txt", 'w' )
 
 def pLe():
