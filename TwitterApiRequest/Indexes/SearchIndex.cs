@@ -101,7 +101,7 @@ namespace TwitterApiRequest.Indexes
 
         public int HashFunction(int date)
         {
-            return date - 20191012;
+            return date - 20191020;
         }
 
         public void SearchWithIndex(string id)

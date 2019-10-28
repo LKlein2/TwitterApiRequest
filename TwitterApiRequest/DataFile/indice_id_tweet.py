@@ -11,7 +11,7 @@ def pLe():
 	return linha
 
 lista = []
-w.write("21;10\n")
+w.write("21;10                         \n")
 
 while pLe():
 	pass	

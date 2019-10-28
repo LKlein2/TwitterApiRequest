@@ -22,7 +22,7 @@ lista = []
 ordendado = []
 while pLe():
 	pass
-w.write("08;10\n")
+w.write("08;10             \n")
 lista.sort(key=operator.attrgetter('index'))
 for x in range (len(lista)):
 	w.write(lista[x].index + str('%010d' % lista[x].offset) + "\n")

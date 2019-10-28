@@ -25,7 +25,7 @@ namespace TwitterApiRequest
             #endregion
 
             //string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
-            string folderpath = @"C:\Users\Eduardo\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            string folderpath = @"C:\Users\eduardo.lunelli\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
             string file = @"twitter2.txt";
             string indexFile;
             SearchIndex si;

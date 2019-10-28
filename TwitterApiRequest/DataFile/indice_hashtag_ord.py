@@ -29,7 +29,7 @@ ordendado = []
 while pLe():
 	pass
 var = "280;10"
-w.write(var.ljust(285) + "\n")
+w.write(var.ljust(290) + "\n")
 lista.sort(key = lambda mbr: operator.attrgetter('index')(mbr).lower(), reverse = True)
 for x in range (len(lista)):
-	w.write((lista[x].index).ljust(278)+ " " + str('%010d' % lista[x].offset) + "\n")
+	w.write((lista[x].index).ljust(279)+ " " + str('%010d' % lista[x].offset) + "\n")

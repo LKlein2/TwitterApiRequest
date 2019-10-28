@@ -21,11 +21,12 @@ namespace TwitterApiRequest
             Tweet = line.Substring(28, 280);
             HashTags = line.Substring(308, 280);
             UserId = Convert.ToInt64(line.Substring(589, 20));
+            ScreenName = line.Substring(607, 40);
         }
 
         public override string ToString()
         {
-            return $"ID: {Id} Date: {Date.ToString()} \n" +
+            return $"ID: {Id} Date: {Date.ToString("dd/MM/yyyy")} \n" +
                    $"Tweet: {Tweet.Trim()}\n" +
                    $"HashTags: {HashTags.Trim()}\n" +
                    $"User id: {UserId} : {ScreenName.Trim()}";

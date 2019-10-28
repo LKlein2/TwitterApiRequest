@@ -26,6 +26,7 @@ def pLe():
 lista = []
 while pLe():
 	pass
-w.write("280;10\n")
+var = "280;10"
+w.write(var.ljust(289) + "\n")
 for x in range (len(lista)):
 	w.write((lista[x].index).ljust(278)+ " " + str('%010d' % lista[x].offset) + "\n")
