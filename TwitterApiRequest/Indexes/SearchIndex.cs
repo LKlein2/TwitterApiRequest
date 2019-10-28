@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -97,6 +98,57 @@ namespace TwitterApiRequest.Indexes
             {
                 Console.WriteLine("Não foi possível encontrar!");
             }
+        }
+
+        public void SearchHashNew(int index)
+        {
+            index = HashFunction(index);
+
+            Hashtable times = new Hashtable();
+            times["SKT"] = 0;
+            times["FANATIC"] = 0;
+            times["GRIFFIN "] = 0;
+            times["FUNPLUS"] = 0;
+            times["G2"] = 0;
+            ArrayList al = new ArrayList(times.Keys);
+
+            try
+            {
+                if (TheArray[index].Count <= 0)
+                {
+                    Console.WriteLine("Não foi possível encontrar!");
+                    return;
+                }
+                foreach (var item in TheArray[index])
+                {
+                    foreach (var k in al)
+                    {
+                        if (item.Tweet.ToUpper().Contains(k.ToString()))
+                        {
+                            int teste = Convert.ToInt32(times[k]) + 1;
+                            times[k] = teste;
+                        }
+                    }
+                }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Não foi possível encontrar!");
+        }
+            string time = "";
+            int maior = 0;
+            foreach (var k in al)
+            {
+                if (Convert.ToInt32(times[k]) > maior)
+                {
+                    time = k.ToString();
+                    maior = Convert.ToInt32(times[k]);
+                }
+                Console.Write($"Time {k} possui {times[k]} menções!\n");
+            }
+            Console.Write("\n");
+            Console.WriteLine($"O time mais comentado foi {time} com {maior} menções!");
+            Console.Write("\n\n");
         }
 
         public int HashFunction(int date)

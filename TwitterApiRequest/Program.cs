@@ -14,8 +14,8 @@ namespace TwitterApiRequest
 {
     public class Program
     {
-        static async Task Main(string[] args)
-        //static void Main(string[] args)
+        //static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             #region Request e Write
 
@@ -25,7 +25,7 @@ namespace TwitterApiRequest
             #endregion
 
             //string folderpath = @"C:\Users\Lucas\Source\Repos\TwitterApiRequest\TwitterApiRequest\DataFile";
-            string folderpath = @"C:\Users\eduardo.lunelli\source\repos\TwitterApiRequest\TwitterApiRequest\DataFile";
+            string folderpath = @"C:\Users\Lucas\Source\Repos\LKlein2\TwitterApiRequest\TwitterApiRequest\DataFile";
             string file = @"twitter2.txt";
             string indexFile;
             SearchIndex si;
@@ -33,13 +33,14 @@ namespace TwitterApiRequest
 
             while (isTrue)
             {
-
+                Console.WriteLine("\n ********** M E N U **********");
                 Console.WriteLine("0 - Sair!");
                 Console.WriteLine("1 - Busca sequencial indexada por ID tweet!");
                 Console.WriteLine("2 - Busca sequencial indexada por Screen name!");
                 Console.WriteLine("3 - Busca sequencial indexada por Hashtag!");
                 Console.WriteLine("4 - Busca hash por data!");
                 Console.WriteLine("5 - Busca Index Árvore!");
+                Console.WriteLine("6 - Time mais comentado por data!");
                 var x = Console.ReadLine();
                 Console.Clear();
 
@@ -89,8 +90,17 @@ namespace TwitterApiRequest
                         texto = Console.ReadLine();
                         si.SearchTree(texto);
                         break;
-                        #endregion
-                default:
+                    #endregion
+                    case "6":
+                        #region HashTag Tree
+                        si = new SearchIndex(folderpath, file);
+                        si.ReadAndStore();
+                        Console.WriteLine("Digite uma data: \n");
+                        texto = Console.ReadLine();
+                        si.SearchHashNew(Convert.ToInt32(texto));
+                        break;
+                    #endregion
+                    default:
                         isTrue = false;
                         break;
 	            }
