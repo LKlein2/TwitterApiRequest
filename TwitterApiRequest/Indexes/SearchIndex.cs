@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using TwitterApiRequest.Crypt;
 
 namespace TwitterApiRequest.Indexes
 {
@@ -16,6 +18,10 @@ namespace TwitterApiRequest.Indexes
         public List<RecordModel>[] TheArray;
         public Tree.Tree Tree;
 
+        public SearchIndex()
+        {
+
+        }
 
         public SearchIndex(string folderPath, string fileName)
         {
@@ -49,9 +55,48 @@ namespace TwitterApiRequest.Indexes
                     line = reader.ReadLine();
                     date = line.Substring(20, 8);
                     index = HashFunction(Convert.ToInt32(date));
-                    TheArray[index].Add(new RecordModel(line));
+                    TheArray[index].Add(new RecordModel(line, true));
                 }
             }
+        }
+
+        public void SerializeRecordModel()
+        {
+            string path = FolderPath + @"\" + FileName;
+            string line;
+            List<RecordModel> recordModel = new List<RecordModel>();
+
+            using (StreamReader reader = new StreamReader(path))
+            {
+                while (!reader.EndOfStream)
+                {
+                    line = reader.ReadLine();
+                    recordModel.Add(new RecordModel(line,true));
+                }
+            }
+            // serialize JSON directly to a file
+            using (StreamWriter file = File.CreateText(@"c:\temp\teste.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, recordModel);
+            }
+        }
+
+        public void Decrypt(string path)
+        {
+            string readText = File.ReadAllText(path);
+            RecordModelMongo recordModel = JsonConvert.DeserializeObject<RecordModelMongo>(readText);
+            string[] hastagArray = recordModel.HashTags.Split("#");
+            string sReturn = "";
+
+            if (hastagArray.Length != 0)
+            { 
+                for (int i = 1; i < hastagArray.Length; i++)
+                {
+                    sReturn += "#" + CesarEncryper.Deencrypt(hastagArray[i]) + "\n";
+                }
+            }
+            Console.WriteLine(sReturn);
         }
 
         public void ReadAndStoreTree()

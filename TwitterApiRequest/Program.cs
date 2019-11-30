@@ -41,6 +41,9 @@ namespace TwitterApiRequest
                 Console.WriteLine("4 - Busca hash por data!");
                 Console.WriteLine("5 - Busca Index Árvore!");
                 Console.WriteLine("6 - Time mais comentado por data!");
+                Console.WriteLine("7 - Gerar Json criptografado!");
+                Console.WriteLine("8 - Gerar querys MongoDB!");
+                Console.WriteLine("9 - Descriptografar hastags!");
                 var x = Console.ReadLine();
                 Console.Clear();
 
@@ -72,7 +75,7 @@ namespace TwitterApiRequest
                         texto = Console.ReadLine();
                         si.SearchWithIndex(texto);
                         break;
-                    #endregion
+                        #endregion
                     case "4":
                         #region Search dataHash
                         si = new SearchIndex(folderpath, file);
@@ -81,7 +84,7 @@ namespace TwitterApiRequest
                         texto = Console.ReadLine();
                         si.SearchHash(Convert.ToInt32(texto));
                         break;
-                    #endregion
+                        #endregion
                     case "5":
                         #region HashTag Tree
                         si = new SearchIndex(folderpath, file);
@@ -90,7 +93,7 @@ namespace TwitterApiRequest
                         texto = Console.ReadLine();
                         si.SearchTree(texto);
                         break;
-                    #endregion
+                        #endregion
                     case "6":
                         #region HashTag Tree
                         si = new SearchIndex(folderpath, file);
@@ -99,7 +102,26 @@ namespace TwitterApiRequest
                         texto = Console.ReadLine();
                         si.SearchHashNew(Convert.ToInt32(texto));
                         break;
-                    #endregion
+                        #endregion
+                    case "7":
+                        si = new SearchIndex(folderpath, file);
+                        si.SerializeRecordModel();
+                        break;
+                    case "8":
+                        Console.WriteLine("Digite uma data (yyyy-mm-dd): \n");
+                        texto = Console.ReadLine();
+                        Console.WriteLine("db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.* G2.*/ i }, { Date: /.* " + texto + ".*/ } ] } )");
+                        Console.WriteLine("db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.* SKT.*/ i }, { Date: /.* " + texto + ".*/ } ] } )");
+                        Console.WriteLine("db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.* FNATIC.*/ i }, { Date: /.* " + texto + ".*/ } ] } )");
+                        Console.WriteLine("db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.* FUNPLUS.*/ i }, { Date: /.* " + texto + ".*/ } ] } )");
+                        Console.WriteLine("db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.* GRIFFIN.*/ i }, { Date: /.* " + texto + ".*/ } ] } )");
+                        break;
+                    case "9":
+                        Console.WriteLine("Digite o caminho do arquivo: \n");
+                        texto = Console.ReadLine();
+                        si = new SearchIndex();
+                        si.Decrypt(texto);
+                        break;
                     default:
                         isTrue = false;
                         break;
