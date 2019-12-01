@@ -1,0 +1,5 @@
+db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.*G2.*/i }, { Date: /.*2019-10-28.*/ } ] } )
+db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.*SKT.*/i }, { Date: /.*2019-10-28.*/ } ] } )
+db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.*FNATIC.*/i }, { Date: /.*2019-10-28.*/ } ] } )
+db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.*FUNPLUS.*/i }, { Date: /.*2019-10-28.*/ } ] } )
+db.getCollection('TwitterDb').count( { $and: [ { Tweet: /.*GRIFFIN.*/i }, { Date: /.*2019-10-28.*/ } ] } )

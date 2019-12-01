@@ -1,0 +1,13 @@
+Pré configuração:
+Abrir o visual studio e configurar as variaveis de caminho.
+Se certificar que os arquivos de index estão atualizados.
+
+1 - Explicar o objetivo do trabalho (hipotese) e o mongoDB.
+2 - Utilizar a opção 6 do menu para obter a resposta a partir da analise no C#.
+3 - Utilizar a opção 7 para gerar o json criptografado.
+4 - Explicar as adequações necessarias no arquivo Json.
+5 - Inserir o json devidamente formatado no mongoDB através da importação de arquivo 1_TwitterData.json
+6 - Rodar as 6 querys de hipotese disponiveis na opção 8 do programa ou no arquivo 2_QueryHipotese
+7 - Rodar a query de consulta unica e pegar um resultado 3_QueryFormatedSingleReturn
+8 - Explicar a formatação necessaria e utilizar a opção 9 informando o caminho do arquivo 4_EncryptedSingleTweet
+9 - Fazer observações gerais sobre o aprendizado no trabalho
